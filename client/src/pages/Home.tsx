@@ -11,7 +11,7 @@ import { ArrowRight, CheckCircle, ChevronRight, Phone } from "lucide-react";
 import { Link } from "wouter";
 
 // Container 360 GIF URL (uploaded to webdev static storage)
-const CONTAINER_GIF = "/manus-storage/container_360_9b9e767e.gif";
+const CONTAINER_GIF = "/container_360.gif";
 
 // ── Hero Section ─────────────────────────────────────────────────────────────
 function HeroSection() {
