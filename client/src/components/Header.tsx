@@ -46,15 +46,8 @@ function LogoMark({ size = 32 }: { size?: number }) {
 }
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location] = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -64,12 +57,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-sm border-b border-[var(--border)] shadow-sm"
-            : "bg-transparent"
-        }`}
-        style={{ transitionTimingFunction: "var(--ease-out-snappy)" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#1C1C1E] border-b border-white/10 shadow-sm"
       >
         <div className="container">
           <div className="flex items-center justify-between h-16 lg:h-18">
@@ -82,7 +70,7 @@ export default function Header() {
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 700,
                   letterSpacing: "0.02em",
-                  color: "var(--foreground)",
+                  color: "#ffffff",
                 }}
               >
                 {SITE.name}
@@ -95,7 +83,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`nav-link ${location === link.href ? "active" : ""}`}
+                  className={`nav-link-dark ${location === link.href ? "active" : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -106,7 +94,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href={SITE.phoneHref}
-                className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150"
+                className="flex items-center gap-1.5 text-sm font-medium text-white/70 hover:text-[var(--amber)] transition-colors duration-150"
                 style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 <Phone size={14} />

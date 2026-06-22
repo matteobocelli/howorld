@@ -48,11 +48,11 @@ function HeroSection() {
                 transitionDelay: "60ms",
               }}
             >
-              The Container
+              Your Stuff,
               <br />
-              <span style={{ color: "#D97706" }}>That Ships</span>
+              <span style={{ color: "#D97706" }}>Safe & Secure</span>
               <br />
-              Monday.
+              On Your Site.
             </h1>
 
             <p
