@@ -57,7 +57,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 bg-[#1C1C1E] border-b border-white/10 shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm"
       >
         <div className="container">
           <div className="flex items-center justify-between h-16 lg:h-18">
@@ -70,7 +70,7 @@ export default function Header() {
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 700,
                   letterSpacing: "0.02em",
-                  color: "#ffffff",
+                  color: "#1C1C1E",
                 }}
               >
                 {SITE.name}
@@ -83,7 +83,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`nav-link-dark ${location === link.href ? "active" : ""}`}
+                  className={`nav-link ${location === link.href ? "active" : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -94,7 +94,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href={SITE.phoneHref}
-                className="flex items-center gap-1.5 text-sm font-medium text-white/70 hover:text-[var(--amber)] transition-colors duration-150"
+                className="flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[var(--amber)] transition-colors duration-150"
                 style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
               >
                 <Phone size={14} />

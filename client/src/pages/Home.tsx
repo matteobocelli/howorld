@@ -26,7 +26,7 @@ function HeroSection() {
         }}
       />
 
-      <div className="container relative z-10 py-24 lg:py-0 lg:min-h-screen flex items-center">
+      <div className="container relative z-10 py-16 lg:py-0 lg:min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
           {/* Left: Headline + Form */}
           <div className="lg:col-span-6 xl:col-span-5">
