@@ -11,7 +11,7 @@ import { ArrowRight, CheckCircle, ChevronRight, Phone } from "lucide-react";
 import { Link } from "wouter";
 
 // Container 360 video URL (uploaded to webdev static storage)
-const CONTAINER_VIDEO = "/manus-storage/container_360_d5fe79c8.mp4";
+const CONTAINER_VIDEO = "/container_360.mp4";
 
 // ── Hero Section ─────────────────────────────────────────────────────────────
 function HeroSection() {
