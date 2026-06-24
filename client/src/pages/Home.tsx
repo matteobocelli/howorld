@@ -10,8 +10,8 @@ import { CONTAINERS, SITE, VALUE_PROPS } from "@/lib/siteConfig";
 import { ArrowRight, CheckCircle, ChevronRight, Phone } from "lucide-react";
 import { Link } from "wouter";
 
-// Container 360 GIF URL (uploaded to webdev static storage)
-const CONTAINER_GIF = "/container_360.gif";
+// Container 360 video URL (uploaded to webdev static storage)
+const CONTAINER_VIDEO = "/manus-storage/container_360_d5fe79c8.mp4";
 
 // ── Hero Section ─────────────────────────────────────────────────────────────
 function HeroSection() {
@@ -86,17 +86,17 @@ function HeroSection() {
 
             {/* Quote form */}
             <div
-              className="animate-fade-up in-view"
+              className="animate-fade-up in-view mt-12"
               style={{ transitionDelay: "240ms" }}
             >
               <QuoteForm />
             </div>
           </div>
 
-          {/* Right: 360° Container GIF */}
+          {/* Right: 360° Container Video */}
           <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center lg:justify-end">
             <div
-              className="animate-fade-up in-view relative w-full max-w-[480px] lg:max-w-none"
+              className="animate-fade-up in-view relative w-full max-w-[520px] lg:max-w-none"
               style={{ transitionDelay: "120ms" }}
             >
               {/* Angled clip frame */}
@@ -104,15 +104,18 @@ function HeroSection() {
                 className="relative overflow-hidden"
                 style={{
                   clipPath: "polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)",
-                  width: "min(460px, calc(100vw - 2rem))",
-                  aspectRatio: "1 / 1",
+                  width: "min(520px, calc(100vw - 2rem))",
+                  aspectRatio: "4 / 3",
                 }}
               >
-                <img
-                  src={CONTAINER_GIF}
-                  alt="360° aerial view of a 20-foot shipping container"
+                <video
+                  src={CONTAINER_VIDEO}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
-                  loading="eager"
+                  style={{ display: "block" }}
                 />
                 {/* Dark overlay at edges */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1C1C1E]/30 via-transparent to-[#1C1C1E]/20 pointer-events-none" />
