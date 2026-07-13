@@ -11,7 +11,7 @@ import { ArrowRight, CheckCircle, Phone, Star } from "lucide-react";
 import { Link } from "wouter";
 
 // Hero video — served from public/ folder (bundled with Vercel build)
-const HERO_VIDEO = "/hero_container.mp4";
+const HERO_VIDEO = "https://github.com/mshaynehall1-dev/container-rental-site/releases/download/v1.0-assets/20-footsteelshippingcontaineronjobsite.mp4";
 
 // Container card images (CDN URLs from webdev static assets)
 const CARD_IMAGES = {
