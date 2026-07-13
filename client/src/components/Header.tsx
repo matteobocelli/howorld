@@ -10,8 +10,9 @@ import { Link, useLocation } from "wouter";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/containers", label: "Containers" },
+  { href: "/containers", label: "Container Sizes" },
   { href: "/how-it-works", label: "How It Works" },
+  { href: "/service-areas", label: "Service Areas" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -101,7 +102,7 @@ export default function Header() {
                 {SITE.phone}
               </a>
               <Link href="/contact" className="btn-primary text-sm py-2 px-4">
-                Get a Quote
+                Find the Right Container
               </Link>
             </div>
 
@@ -171,7 +172,7 @@ export default function Header() {
               {SITE.phone}
             </a>
             <Link href="/contact" className="btn-primary text-center justify-center">
-              Get a Quote
+              Find the Right Container
             </Link>
           </div>
         </div>

@@ -11,6 +11,7 @@ import Contact from "@/pages/Contact";
 import Containers from "@/pages/Containers";
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
+import ServiceAreas from "@/pages/ServiceAreas";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/containers" component={Containers} />
         <Route path="/how-it-works" component={HowItWorks} />
+        <Route path="/service-areas" component={ServiceAreas} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/404" component={NotFound} />

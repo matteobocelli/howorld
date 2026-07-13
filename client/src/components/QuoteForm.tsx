@@ -83,7 +83,7 @@ export default function QuoteForm() {
           className="text-lg font-bold leading-tight"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          Get a Quote in 60 Seconds
+          Get Pricing & Availability
         </p>
         <p className="text-xs text-muted-foreground mt-0.5">
           No commitment. We'll follow up within one business day.

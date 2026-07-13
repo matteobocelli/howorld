@@ -1,17 +1,25 @@
 /**
  * Home Page
  * Design: Editorial industrial. Left-anchored hero with split layout.
- * Sections: Hero → Value Props → Container Preview → CTA Banner
+ * Sections: Hero → Container Chooser → Value Props → Reviews → CTA Banner
  * No bento grids, no centered card stacks, no gradient text.
  */
 import FadeUp from "@/components/FadeUp";
 import QuoteForm from "@/components/QuoteForm";
-import { CONTAINERS, SITE, VALUE_PROPS } from "@/lib/siteConfig";
-import { ArrowRight, CheckCircle, ChevronRight, Phone } from "lucide-react";
+import { SITE } from "@/lib/siteConfig";
+import { ArrowRight, CheckCircle, Phone, Star } from "lucide-react";
 import { Link } from "wouter";
 
-// Container 360 video URL (uploaded to webdev static storage)
-const CONTAINER_VIDEO = "/container_360.mp4";
+// Hero video — served from public/ folder (bundled with Vercel build)
+const HERO_VIDEO = "/manus-storage/hero_container_7d34c7c9.mp4";
+
+// Container card images (CDN URLs from webdev static assets)
+const CARD_IMAGES = {
+  "10ft": "https://d2xsxph8kpxj0f.cloudfront.net/310419663030147699/ZDB76djiTsDcDThB57fX6p/container_10ft-KrFS62vnR3wKz8SHUQQCGu.webp",
+  "20ft": "https://d2xsxph8kpxj0f.cloudfront.net/310419663030147699/ZDB76djiTsDcDThB57fX6p/container_20ft-fXCYX4DSPwCf4q7VvHtf7L.webp",
+  "40ft": "https://d2xsxph8kpxj0f.cloudfront.net/310419663030147699/ZDB76djiTsDcDThB57fX6p/container_40ft-8vYAUPgVaYtyBZC9TEY79P.webp",
+  "40hc": "https://d2xsxph8kpxj0f.cloudfront.net/310419663030147699/ZDB76djiTsDcDThB57fX6p/container_40hc-3qCJDXDJX2pPqfpfYB6tSa.webp",
+};
 
 // ── Hero Section ─────────────────────────────────────────────────────────────
 function HeroSection() {
@@ -28,21 +36,20 @@ function HeroSection() {
 
       <div className="container relative z-10 py-16 lg:py-0 lg:min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
-          {/* Left: Headline + Form */}
+
+          {/* Left: Headline + Value + Proof + Form */}
           <div className="lg:col-span-6 xl:col-span-5">
-            {/* Amber rule */}
-            <div
-              className="animate-fade-up in-view"
-              style={{ transitionDelay: "0ms" }}
-            >
+            {/* Eyebrow */}
+            <div className="animate-fade-up in-view" style={{ transitionDelay: "0ms" }}>
               <span className="stencil-label">Container Rentals</span>
             </div>
 
+            {/* Headline */}
             <h1
-              className="animate-fade-up in-view text-white mt-3 mb-6"
+              className="animate-fade-up in-view text-white mt-3 mb-4"
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
-                fontSize: "clamp(3rem, 6vw, 5rem)",
+                fontSize: "clamp(2.75rem, 5.5vw, 4.5rem)",
                 fontWeight: 700,
                 lineHeight: 1.0,
                 transitionDelay: "60ms",
@@ -55,48 +62,62 @@ function HeroSection() {
               On Your Site.
             </h1>
 
+            {/* Value — body copy */}
             <p
-              className="animate-fade-up in-view text-white/60 text-base leading-relaxed mb-8 max-w-md"
-              style={{ transitionDelay: "120ms" }}
+              className="animate-fade-up in-view text-white/70 text-base leading-relaxed mb-2 max-w-md"
+              style={{ transitionDelay: "100ms" }}
             >
-              10ft, 20ft, 40ft, and High Cube containers — delivered to your site, wind and watertight, ready to load.
+              Rent clean, secure 10-foot, 20-foot, 40-foot, and high-cube storage containers delivered directly to your home, jobsite, business, or property.
             </p>
 
-            {/* Stats row */}
+            {/* Trust line */}
+            <p
+              className="animate-fade-up in-view text-[#D97706] text-sm font-semibold mb-2 max-w-md"
+              style={{ transitionDelay: "120ms", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              Fast delivery. Flexible rental terms. No hidden surprises.
+            </p>
+
+            {/* Service area */}
+            <p
+              className="animate-fade-up in-view text-white/45 text-xs mb-8 max-w-md"
+              style={{ transitionDelay: "140ms" }}
+            >
+              Serving [City], [County], and Surrounding Areas
+            </p>
+
+            {/* Proof points */}
             <div
-              className="animate-fade-up in-view flex items-center gap-6 mb-10"
+              className="animate-fade-up in-view grid grid-cols-3 gap-4 mb-10"
               style={{ transitionDelay: "180ms" }}
             >
               {[
-                { num: "4", label: "Container sizes" },
-                { num: "48h", label: "Typical delivery" },
-                { num: "100%", label: "Inspected" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    className="spec-num text-2xl font-bold text-white"
-                    style={{ color: "#D97706" }}
-                  >
-                    {stat.num}
-                  </p>
-                  <p className="text-xs text-white/40 mt-0.5">{stat.label}</p>
+                { icon: <CheckCircle size={16} className="text-[#D97706]" />, title: "Fast Delivery", body: "Typical delivery within 48 hours" },
+                { icon: <CheckCircle size={16} className="text-[#D97706]" />, title: "Wind & Watertight", body: "Containers inspected before delivery" },
+                { icon: <CheckCircle size={16} className="text-[#D97706]" />, title: "Flexible Rentals", body: "Short- and long-term options" },
+              ].map((p) => (
+                <div key={p.title} className="flex flex-col gap-1.5">
+                  <div className="flex items-center gap-1.5">
+                    {p.icon}
+                    <p className="text-white text-xs font-bold leading-tight" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.875rem" }}>
+                      {p.title}
+                    </p>
+                  </div>
+                  <p className="text-white/40 text-[11px] leading-snug">{p.body}</p>
                 </div>
               ))}
             </div>
 
-            {/* Quote form */}
-            <div
-              className="animate-fade-up in-view mt-12"
-              style={{ transitionDelay: "240ms" }}
-            >
+            {/* Form */}
+            <div className="animate-fade-up in-view" style={{ transitionDelay: "240ms" }}>
               <QuoteForm />
             </div>
           </div>
 
-          {/* Right: 360° Container Video */}
+          {/* Right: Hero Video */}
           <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center lg:justify-end">
             <div
-              className="animate-fade-up in-view relative w-full max-w-[520px] lg:max-w-none"
+              className="animate-fade-up in-view relative w-full max-w-[560px] lg:max-w-none"
               style={{ transitionDelay: "120ms" }}
             >
               {/* Angled clip frame */}
@@ -104,12 +125,12 @@ function HeroSection() {
                 className="relative overflow-hidden"
                 style={{
                   clipPath: "polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)",
-                  width: "min(520px, calc(100vw - 2rem))",
-                  aspectRatio: "4 / 3",
+                  width: "min(560px, calc(100vw - 2rem))",
+                  aspectRatio: "16 / 10",
                 }}
               >
                 <video
-                  src={CONTAINER_VIDEO}
+                  src={HERO_VIDEO}
                   autoPlay
                   loop
                   muted
@@ -126,13 +147,12 @@ function HeroSection() {
                 className="absolute -bottom-4 left-4 bg-[#D97706] text-white px-4 py-2.5"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
-                <p className="text-xs font-semibold tracking-widest uppercase opacity-80">
-                  Shown
-                </p>
+                <p className="text-xs font-semibold tracking-widest uppercase opacity-80">Shown</p>
                 <p className="text-xl font-bold leading-tight">20FT Standard</p>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -145,20 +165,249 @@ function HeroSection() {
   );
 }
 
+// ── Container Chooser Section ─────────────────────────────────────────────────
+const CONTAINER_CARDS = [
+  {
+    id: "10ft",
+    label: "10-Foot",
+    name: "10-Foot Container",
+    tagline: "Compact storage for homes, renovations, and tight spaces.",
+    dimensions: { exterior: "10′ L × 8′ W × 8′6″ H", interior: "9′5″ L × 7′8″ W × 7′10″ H" },
+    capacity: "~560 cu ft — fits a studio apartment",
+    bestUses: ["Home storage", "Renovations", "Small businesses", "Tight access sites"],
+    img: CARD_IMAGES["10ft"],
+  },
+  {
+    id: "20ft",
+    label: "20-Foot",
+    name: "20-Foot Container",
+    tagline: "The most popular option for jobsites, businesses, and general storage.",
+    dimensions: { exterior: "20′ L × 8′ W × 8′6″ H", interior: "19′4″ L × 7′8″ W × 7′10″ H" },
+    capacity: "~1,170 cu ft — fits a 2–3 bedroom home",
+    bestUses: ["Construction jobsites", "Business inventory", "General storage", "Seasonal overflow"],
+    img: CARD_IMAGES["20ft"],
+    popular: true,
+  },
+  {
+    id: "40ft",
+    label: "40-Foot",
+    name: "40-Foot Container",
+    tagline: "Maximum storage for commercial inventory, equipment, and large projects.",
+    dimensions: { exterior: "40′ L × 8′ W × 8′6″ H", interior: "39′5″ L × 7′8″ W × 7′10″ H" },
+    capacity: "~2,350 cu ft — fits a 4–5 bedroom home",
+    bestUses: ["Commercial inventory", "Large equipment", "Retail overflow", "Long-term storage"],
+    img: CARD_IMAGES["40ft"],
+  },
+  {
+    id: "40hc",
+    label: "40-Foot HC",
+    name: "40-Foot High Cube",
+    tagline: "Extra height and capacity for oversized storage needs.",
+    dimensions: { exterior: "40′ L × 8′ W × 9′6″ H", interior: "39′5″ L × 7′8″ W × 8′10″ H" },
+    capacity: "~2,700 cu ft — 1 foot taller than standard",
+    bestUses: ["Oversized items", "Tall equipment", "Pallet storage", "Workshop conversion"],
+    img: CARD_IMAGES["40hc"],
+  },
+];
+
+function ContainerChooserSection() {
+  return (
+    <section className="bg-[var(--background)] py-16 lg:py-24">
+      <div className="container">
+        <FadeUp>
+          <div className="mb-12">
+            <span className="amber-rule" />
+            <h2
+              className="mt-3"
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: "clamp(2rem, 4vw, 2.75rem)",
+                fontWeight: 700,
+                lineHeight: 1.1,
+              }}
+            >
+              Choose the Right Container
+              <br />
+              for Your Space
+            </h2>
+          </div>
+        </FadeUp>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          {CONTAINER_CARDS.map((c, i) => (
+            <FadeUp key={c.id} delay={(i % 4) as 0 | 1 | 2 | 3 | 4 | 5}>
+              <div className="flex flex-col bg-[var(--surface)] overflow-hidden h-full group hover:-translate-y-1 transition-transform duration-200">
+                {/* Photo */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: "3/2" }}>
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Popular badge */}
+                  {c.popular && (
+                    <div
+                      className="absolute top-3 right-3 bg-[#D97706] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1"
+                      style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+                    >
+                      Most Popular
+                    </div>
+                  )}
+                  {/* Size label overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-3 left-3">
+                    <span
+                      className="text-white font-bold"
+                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.5rem" }}
+                    >
+                      {c.label}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-5">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.tagline}</p>
+
+                  {/* Dimensions */}
+                  <div className="mb-3">
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Dimensions</p>
+                    <p className="spec-num text-xs font-medium">{c.dimensions.exterior}</p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5">Interior: {c.dimensions.interior}</p>
+                  </div>
+
+                  {/* Capacity */}
+                  <div className="mb-4">
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Approximate Capacity</p>
+                    <p className="text-xs font-medium">{c.capacity}</p>
+                  </div>
+
+                  {/* Best uses */}
+                  <div className="mb-5 flex-1">
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-2">Best Uses</p>
+                    <ul className="space-y-1">
+                      {c.bestUses.map((use) => (
+                        <li key={use} className="flex items-center gap-2 text-xs text-foreground">
+                          <span className="w-1 h-1 rounded-full bg-[#D97706] shrink-0" />
+                          {use}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA */}
+                  <Link
+                    href="/contact"
+                    className="mt-auto flex items-center justify-center gap-2 bg-[#1C1C1E] text-white text-sm font-semibold py-3 px-4 hover:bg-[#D97706] transition-colors duration-200"
+                    style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1rem", letterSpacing: "0.02em" }}
+                  >
+                    Get Pricing <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Reviews Section ───────────────────────────────────────────────────────────
+const REVIEWS = [
+  {
+    id: 1,
+    stars: 5,
+    quote: "Fast delivery and exactly what we needed. The container was clean and in great shape.",
+    name: "Sarah M.",
+    context: "Homeowner, Renovation Project",
+  },
+  {
+    id: 2,
+    stars: 5,
+    quote: "We've used them on three jobsites now. Reliable, on time, and no hassle. Will keep coming back.",
+    name: "James T.",
+    context: "General Contractor",
+  },
+  {
+    id: 3,
+    stars: 5,
+    quote: "Needed a 40-footer on short notice. They had it on-site the next morning. Couldn't ask for better service.",
+    name: "Linda R.",
+    context: "Business Owner",
+  },
+];
+
+function ReviewsSection() {
+  return (
+    <section className="bg-[var(--surface)] py-16 lg:py-20 border-t border-[var(--border)]">
+      <div className="container">
+        <FadeUp>
+          <div className="mb-10">
+            <span className="amber-rule" />
+            <h2
+              className="mt-3"
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+                fontWeight: 700,
+              }}
+            >
+              What Our Customers Say
+            </h2>
+          </div>
+        </FadeUp>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {REVIEWS.map((r, i) => (
+            <FadeUp key={r.id} delay={(i % 3) as 0 | 1 | 2 | 3 | 4 | 5}>
+              <div className="bg-[var(--background)] p-6 border-l-2 border-[#D97706] flex flex-col gap-4 h-full">
+                {/* Stars */}
+                <div className="flex gap-0.5">
+                  {Array.from({ length: r.stars }).map((_, si) => (
+                    <Star key={si} size={14} fill="#D97706" className="text-[#D97706]" />
+                  ))}
+                </div>
+                {/* Quote */}
+                <p className="text-sm leading-relaxed text-foreground flex-1">"{r.quote}"</p>
+                {/* Attribution */}
+                <div>
+                  <p className="text-sm font-bold" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1rem" }}>
+                    {r.name}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground">{r.context}</p>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Value Props Section ───────────────────────────────────────────────────────
 function ValuePropsSection() {
+  const props = [
+    { title: "Delivered to Your Door", body: "We drop off and pick up — no need to arrange transport. Just tell us where and when." },
+    { title: "Wind & Watertight", body: "Every container is inspected before delivery. Your belongings stay dry and secure." },
+    { title: "Flexible Terms", body: "Rent by the month or longer. No long-term contracts required." },
+    { title: "Multiple Sizes", body: "10ft, 20ft, 40ft, and High Cube — the right fit for every job." },
+  ];
+
   return (
-    <section className="bg-[var(--surface)] py-16 lg:py-20">
+    <section className="bg-[var(--background)] py-16 lg:py-20">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-start">
-          {/* Left: heading */}
           <div className="lg:col-span-4">
             <FadeUp>
               <span className="amber-rule" />
               <h2
+                className="mt-3"
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontSize: "clamp(2rem, 4vw, 2.75rem)",
+                  fontWeight: 700,
                 }}
               >
                 Why Businesses
@@ -167,21 +416,13 @@ function ValuePropsSection() {
               </h2>
             </FadeUp>
           </div>
-
-          {/* Right: value props — 2-col grid, not 3-col strip */}
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {VALUE_PROPS.map((prop, i) => (
-              <FadeUp key={prop.id} delay={(i % 4) as 0 | 1 | 2 | 3 | 4 | 5}>
+            {props.map((prop, i) => (
+              <FadeUp key={prop.title} delay={(i % 4) as 0 | 1 | 2 | 3 | 4 | 5}>
                 <div className="flex gap-4">
-                  <div
-                    className="shrink-0 w-1 self-stretch"
-                    style={{ backgroundColor: "#D97706" }}
-                  />
+                  <div className="shrink-0 w-1 self-stretch" style={{ backgroundColor: "#D97706" }} />
                   <div>
-                    <h3
-                      className="text-base font-bold mb-1.5"
-                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.125rem" }}
-                    >
+                    <h3 className="font-bold mb-1.5" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.125rem" }}>
                       {prop.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{prop.body}</p>
@@ -190,95 +431,6 @@ function ValuePropsSection() {
               </FadeUp>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Container Preview Section ─────────────────────────────────────────────────
-function ContainerPreviewSection() {
-  return (
-    <section className="bg-[var(--background)] py-16 lg:py-24">
-      <div className="container">
-        <FadeUp>
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="amber-rule" />
-              <h2
-                style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontSize: "clamp(2rem, 4vw, 2.75rem)",
-                }}
-              >
-                Available Containers
-              </h2>
-            </div>
-            <Link
-              href="/containers"
-              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-[var(--amber)] hover:underline"
-            >
-              View all specs <ChevronRight size={14} />
-            </Link>
-          </div>
-        </FadeUp>
-
-        {/* Horizontal scroll on mobile, 2-col on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {CONTAINERS.map((c, i) => (
-            <FadeUp key={c.id} delay={(i % 4) as 0 | 1 | 2 | 3 | 4 | 5}>
-              <Link href={`/containers#${c.id}`} className="block group no-underline">
-                <div className="bg-[var(--surface)] p-6 transition-all duration-200 group-hover:shadow-md group-hover:-translate-y-0.5 h-full flex flex-col">
-                  {/* Size label */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className="text-3xl font-bold"
-                      style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        color: "#D97706",
-                        letterSpacing: "-0.01em",
-                      }}
-                    >
-                      {c.label}
-                    </span>
-                    {c.featured && (
-                      <span
-                        className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 bg-[#D97706] text-white"
-                      >
-                        Popular
-                      </span>
-                    )}
-                  </div>
-
-                  <h3
-                    className="font-bold text-base mb-2"
-                    style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.125rem" }}
-                  >
-                    {c.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-4 flex-1">
-                    {c.description}
-                  </p>
-
-                  {/* Spec row */}
-                  <div className="border-t border-[var(--border)] pt-3 mt-auto">
-                    <p className="text-[11px] text-muted-foreground mb-0.5">Exterior</p>
-                    <p className="spec-num text-sm font-medium">{c.dimensions.exterior}</p>
-                  </div>
-
-                  <div className="flex items-center gap-1 mt-3 text-[var(--amber)] text-xs font-medium group-hover:gap-2 transition-all duration-150">
-                    View specs <ArrowRight size={12} />
-                  </div>
-                </div>
-              </Link>
-            </FadeUp>
-          ))}
-        </div>
-
-        <div className="sm:hidden mt-6 text-center">
-          <Link href="/containers" className="btn-ghost text-sm py-2.5 px-5">
-            View all container specs
-          </Link>
         </div>
       </div>
     </section>
@@ -298,6 +450,7 @@ function CTABanner() {
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontWeight: 700,
                 }}
               >
                 Ready to Reserve Your Container?
@@ -310,7 +463,7 @@ function CTABanner() {
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
             <FadeUp delay={1}>
               <Link href="/contact" className="btn-primary">
-                Get a Quote <ArrowRight size={16} />
+                Find the Right Container <ArrowRight size={16} />
               </Link>
             </FadeUp>
             <FadeUp delay={2}>
@@ -325,51 +478,14 @@ function CTABanner() {
   );
 }
 
-// ── Use Cases Strip ───────────────────────────────────────────────────────────
-function UseCasesSection() {
-  const cases = [
-    { label: "Construction Sites", icon: "🏗" },
-    { label: "Retail Overflow", icon: "📦" },
-    { label: "Residential Storage", icon: "🏠" },
-    { label: "Event Staging", icon: "🎪" },
-    { label: "Document Archives", icon: "📁" },
-    { label: "Workshop Conversion", icon: "🔧" },
-  ];
-
-  return (
-    <section className="bg-[var(--background)] py-14 border-t border-[var(--border)]">
-      <div className="container">
-        <FadeUp>
-          <p
-            className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6"
-            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-          >
-            Common Use Cases
-          </p>
-        </FadeUp>
-        <div className="flex flex-wrap gap-3">
-          {cases.map((c, i) => (
-            <FadeUp key={c.label} delay={(i % 5) as 0 | 1 | 2 | 3 | 4 | 5}>
-              <div className="flex items-center gap-2 px-4 py-2.5 border border-[var(--border)] text-sm font-medium text-foreground">
-                <span>{c.icon}</span>
-                {c.label}
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <ContainerChooserSection />
       <ValuePropsSection />
-      <ContainerPreviewSection />
-      <UseCasesSection />
+      <ReviewsSection />
       <CTABanner />
     </div>
   );
