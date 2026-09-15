@@ -7,25 +7,43 @@ import { SITE } from "@/lib/siteConfig";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
+// const VALUES = [
+//   {
+//     title: "Reliability First",
+//     body: "We don't deliver a container that isn't ready. Every unit is inspected for structural integrity, door function, and weatherproofing before it leaves our yard.",
+//   },
+//   {
+//     title: "Transparent Pricing",
+//     body: "No surprise fees at pickup. The price we quote is the price you pay. Delivery, placement, and pickup are included in our standard rate.",
+//   },
+//   {
+//     title: "Local Knowledge",
+//     body: "We know the roads, the permit requirements, and the site conditions in our service area. That local knowledge means fewer delays and smoother deliveries.",
+//   },
+//   {
+//     title: "Responsive Service",
+//     body: "When you call, you reach someone who knows your order. We don't route you through a national call center.",
+//   },
+// ];
+
 const VALUES = [
   {
     title: "Reliability First",
-    body: "We don't deliver a container that isn't ready. Every unit is inspected for structural integrity, door function, and weatherproofing before it leaves our yard.",
+    body: "We supply microelectronic components that meet strict quality standards. Every batch is inspected for functionality, consistency, and compliance before delivery.",
   },
   {
     title: "Transparent Pricing",
-    body: "No surprise fees at pickup. The price we quote is the price you pay. Delivery, placement, and pickup are included in our standard rate.",
+    body: "No hidden fees or surprise charges. The price we quote is the price you pay, including shipping and handling. Our quotes are clear and upfront.",
   },
   {
-    title: "Local Knowledge",
-    body: "We know the roads, the permit requirements, and the site conditions in our service area. That local knowledge means fewer delays and smoother deliveries.",
+    title: "Technical Expertise",
+    body: "We understand the nuances of microelectronics, from specifications to compliance standards. This expertise ensures you get the right components for your application.",
   },
   {
-    title: "Responsive Service",
-    body: "When you call, you reach someone who knows your order. We don't route you through a national call center.",
+    title: "Responsive Support",
+    body: "When you reach out, you speak with knowledgeable staff who understand your needs. We prioritize quick, personalized assistance over automated responses.",
   },
 ];
-
 export default function About() {
   return (
     <div className="min-h-screen">
@@ -41,7 +59,7 @@ export default function About() {
                 fontSize: "clamp(2.5rem, 5vw, 4rem)",
               }}
             >
-              About {SITE.name}
+              About {SITE.name} LIMITED
             </h1>
           </FadeUp>
         </div>
@@ -69,13 +87,20 @@ export default function About() {
             <div className="lg:col-span-6 lg:col-start-7">
               <FadeUp delay={1}>
                 <p className="text-base text-muted-foreground leading-relaxed mb-5">
-                  [COMPANY NAME] was founded with a straightforward mission: provide businesses and individuals with reliable, affordable container rentals — without the runaround.
+                  {SITE.name} LIMITED was founded with a straightforward
+                  mission: provide businesses and individuals with reliable,
+                  affordable electronic components without the runaround.
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed mb-5">
-                  We've served contractors, retailers, property managers, and homeowners across [service area]. Every job is different, but the standard is always the same: the right container, in the right place, on time.
+                  We’ve supplied microelectronics to distributors and retailers
+                  worldwide. Each project is unique, but our commitment remains
+                  the same: delivering the right components, at the right time,
+                  and to the right place.
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Our fleet is maintained to ISO standards. Our drivers know how to navigate tight sites. And our team is available by phone during business hours — not just by email ticket.
+                  Our inventory is maintained to the highest quality standards.
+                  Our team of experts is ready to assist you with technical
+                  support and order inquiries at all times.
                 </p>
               </FadeUp>
             </div>
@@ -92,7 +117,8 @@ export default function About() {
                 className="text-3xl lg:text-4xl font-bold leading-tight text-foreground"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
-                "A container on your site should feel like a solved problem, not an ongoing project."
+                "Supplying the right microelectronics to your site should feel
+                seamless and straightforward, not like an ongoing challenge."
               </p>
               <footer className="mt-4 stencil-label">— {SITE.name}</footer>
             </blockquote>
@@ -127,7 +153,9 @@ export default function About() {
                     >
                       {v.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{v.body}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {v.body}
+                    </p>
                   </div>
                 </div>
               </FadeUp>
@@ -150,10 +178,10 @@ export default function About() {
                     fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
                   }}
                 >
-                  We Serve {SITE.serviceArea}
+                  We Deliver Anywhere Around the Globe.
                 </h2>
                 <p className="text-white/60 text-sm max-w-md">
-                  Not sure if we cover your location? Give us a call — if we can get there, we will.
+                  Not sure if we cover your location? Send us a mail.
                 </p>
               </FadeUp>
             </div>

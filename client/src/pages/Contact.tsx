@@ -4,14 +4,7 @@
  */
 import FadeUp from "@/components/FadeUp";
 import { SITE } from "@/lib/siteConfig";
-import {
-  CheckCircle,
-  Clock,
-  Loader2,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { CheckCircle, Clock, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 
 // Social icons
@@ -66,9 +59,11 @@ function ContactForm() {
   const [error, setError] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
     setError("");
   };
 
@@ -79,7 +74,7 @@ function ContactForm() {
       return;
     }
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1400));
+    await new Promise(r => setTimeout(r, 1400));
     setSubmitting(false);
     setSubmitted(true);
   };
@@ -96,8 +91,12 @@ function ContactForm() {
             Message Received
           </h3>
           <p className="text-sm text-muted-foreground max-w-sm">
-            We'll be in touch within one business day. For urgent requests, call us at{" "}
-            <a href={SITE.phoneHref} className="text-[var(--amber)] font-medium">
+            We'll be in touch within one business day. For urgent requests, send
+            us whatsapp message at{" "}
+            <a
+              href={SITE.phoneHref}
+              className="text-[var(--amber)] font-medium"
+            >
               {SITE.phone}
             </a>
             .
@@ -114,11 +113,30 @@ function ContactForm() {
           <label className="stencil-label block mb-1.5" htmlFor="c-name">
             Name <span className="text-[var(--amber)]">*</span>
           </label>
-          <input id="c-name" name="name" type="text" className="form-input" placeholder="Jane Smith" value={form.name} onChange={handleChange} required />
+          <input
+            id="c-name"
+            name="name"
+            type="text"
+            className="form-input"
+            placeholder="Jane Smith"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-field">
-          <label className="stencil-label block mb-1.5" htmlFor="c-company">Company</label>
-          <input id="c-company" name="company" type="text" className="form-input" placeholder="Acme Corp (optional)" value={form.company} onChange={handleChange} />
+          <label className="stencil-label block mb-1.5" htmlFor="c-company">
+            Company
+          </label>
+          <input
+            id="c-company"
+            name="company"
+            type="text"
+            className="form-input"
+            placeholder="Acme Corp (optional)"
+            value={form.company}
+            onChange={handleChange}
+          />
         </div>
       </div>
 
@@ -127,17 +145,35 @@ function ContactForm() {
           <label className="stencil-label block mb-1.5" htmlFor="c-phone">
             Phone <span className="text-[var(--amber)]">*</span>
           </label>
-          <input id="c-phone" name="phone" type="tel" className="form-input" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} required />
+          <input
+            id="c-phone"
+            name="phone"
+            type="tel"
+            className="form-input"
+            placeholder="(555) 000-0000"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-field">
           <label className="stencil-label block mb-1.5" htmlFor="c-email">
             Email <span className="text-[var(--amber)]">*</span>
           </label>
-          <input id="c-email" name="email" type="email" className="form-input" placeholder="jane@company.com" value={form.email} onChange={handleChange} required />
+          <input
+            id="c-email"
+            name="email"
+            type="email"
+            className="form-input"
+            placeholder="jane@company.com"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="form-field">
           <label className="stencil-label block mb-1.5" htmlFor="c-size">Container Size</label>
           <select id="c-size" name="containerSize" className="form-input form-select" value={form.containerSize} onChange={handleChange}>
@@ -149,7 +185,7 @@ function ContactForm() {
             <option value="unsure">Not sure yet</option>
           </select>
         </div>
-        <div className="form-field">
+        <div className="form-field ">
           <label className="stencil-label block mb-1.5" htmlFor="c-duration">Rental Duration</label>
           <select id="c-duration" name="rentalDuration" className="form-input form-select" value={form.rentalDuration} onChange={handleChange}>
             <option value="">Select duration</option>
@@ -160,23 +196,49 @@ function ContactForm() {
             <option value="longterm">Long-term (1+ year)</option>
           </select>
         </div>
-      </div>
+      </div> 
 
       <div className="form-field">
-        <label className="stencil-label block mb-1.5" htmlFor="c-address">Delivery Address</label>
-        <input id="c-address" name="deliveryAddress" type="text" className="form-input" placeholder="123 Main St, City, ST 00000" value={form.deliveryAddress} onChange={handleChange} />
-      </div>
+        <label className="stencil-label block mb-1.5" htmlFor="c-address">
+          Delivery Address
+        </label>
+        <input
+          id="c-address"
+          name="deliveryAddress"
+          type="text"
+          className="form-input"
+          placeholder="123 Main St, City, ST 00000"
+          value={form.deliveryAddress}
+          onChange={handleChange}
+        />
+      </div> */}
 
       <div className="form-field">
-        <label className="stencil-label block mb-1.5" htmlFor="c-message">Additional Notes</label>
-        <textarea id="c-message" name="message" className="form-input resize-none" rows={4} placeholder="Site access details, special requirements, questions..." value={form.message} onChange={handleChange} />
+        <label className="stencil-label block mb-1.5" htmlFor="c-message">
+          Additional Notes
+        </label>
+        <textarea
+          id="c-message"
+          name="message"
+          className="form-input resize-none"
+          rows={4}
+          placeholder="Your enquiries"
+          value={form.message}
+          onChange={handleChange}
+        />
       </div>
 
       {error && <p className="text-xs text-destructive">{error}</p>}
 
-      <button type="submit" className="btn-primary justify-center" disabled={submitting}>
+      <button
+        type="submit"
+        className="btn-primary justify-center"
+        disabled={submitting}
+      >
         {submitting ? (
-          <><Loader2 size={16} className="animate-spin" /> Sending...</>
+          <>
+            <Loader2 size={16} className="animate-spin" /> Sending...
+          </>
         ) : (
           "Send Message"
         )}
@@ -203,7 +265,8 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-white/60 mt-3 max-w-lg text-base">
-              Ready to rent, have questions, or need help choosing the right container? We're here.
+              Ready to rent, have questions, or need help choosing the right
+              container? We're here.
             </p>
           </FadeUp>
         </div>
@@ -240,25 +303,47 @@ export default function Contact() {
                       Direct Contact
                     </h3>
                     <div className="flex flex-col gap-3">
-                      <a href={SITE.phoneHref} className="flex items-start gap-3 text-sm hover:text-[var(--amber)] transition-colors duration-150 group">
-                        <Phone size={15} className="mt-0.5 shrink-0 text-[var(--amber)]" />
+                      <a
+                        href={SITE.phoneHref}
+                        className="flex items-start gap-3 text-sm hover:text-[var(--amber)] transition-colors duration-150 group"
+                      >
+                        <Phone
+                          size={15}
+                          className="mt-0.5 shrink-0 text-[var(--amber)]"
+                        />
                         <div>
                           <p className="font-medium">{SITE.phone}</p>
-                          <p className="text-xs text-muted-foreground">Call or text</p>
+                          <p className="text-xs text-muted-foreground">
+                            Call or Whatsapp
+                          </p>
                         </div>
                       </a>
-                      <a href={SITE.emailHref} className="flex items-start gap-3 text-sm hover:text-[var(--amber)] transition-colors duration-150 group">
-                        <Mail size={15} className="mt-0.5 shrink-0 text-[var(--amber)]" />
+                      <a
+                        href={SITE.emailHref}
+                        className="flex items-start gap-3 text-sm hover:text-[var(--amber)] transition-colors duration-150 group"
+                      >
+                        <Mail
+                          size={15}
+                          className="mt-0.5 shrink-0 text-[var(--amber)]"
+                        />
                         <div>
                           <p className="font-medium">{SITE.email}</p>
-                          <p className="text-xs text-muted-foreground">We reply within 1 business day</p>
+                          <p className="text-xs text-muted-foreground">
+                            We reply within 1 business day
+                          </p>
                         </div>
                       </a>
                       <div className="flex items-start gap-3 text-sm">
-                        <MapPin size={15} className="mt-0.5 shrink-0 text-[var(--amber)]" />
+                        <MapPin
+                          size={15}
+                          className="mt-0.5 shrink-0 text-[var(--amber)]"
+                        />
                         <div>
                           <p className="font-medium">{SITE.address.street}</p>
-                          <p className="text-muted-foreground">{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
+                          <p className="text-muted-foreground">
+                            {SITE.address.city}, {SITE.address.state}{" "}
+                            {SITE.address.zip}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -275,7 +360,9 @@ export default function Contact() {
                     <div className="flex flex-col gap-1.5 text-sm">
                       <p>{SITE.hours.weekdays}</p>
                       <p>{SITE.hours.saturday}</p>
-                      <p className="text-muted-foreground">{SITE.hours.sunday}</p>
+                      <p className="text-muted-foreground">
+                        {SITE.hours.sunday}
+                      </p>
                     </div>
                   </div>
 
@@ -285,13 +372,31 @@ export default function Contact() {
                       Follow Us
                     </p>
                     <div className="flex items-center gap-4">
-                      <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150" aria-label="Facebook">
+                      <a
+                        href={SITE.social.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150"
+                        aria-label="Facebook"
+                      >
                         <FacebookIcon />
                       </a>
-                      <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150" aria-label="YouTube">
+                      <a
+                        href={SITE.social.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150"
+                        aria-label="YouTube"
+                      >
                         <YouTubeIcon />
                       </a>
-                      <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150" aria-label="Instagram">
+                      <a
+                        href={SITE.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-[var(--amber)] transition-colors duration-150"
+                        aria-label="Instagram"
+                      >
                         <InstagramIcon />
                       </a>
                     </div>

@@ -7,14 +7,15 @@ import { SITE } from "@/lib/siteConfig";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
+import logo from "../images/ho-logo.png";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/containers", label: "Container Sizes" },
+  { href: "/news-update", label: "News Update" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/service-areas", label: "Service Areas" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 // Container cross-section logo mark
@@ -33,15 +34,79 @@ function LogoMark({ size = 32 }: { size?: number }) {
       {/* Door seam — center vertical line */}
       <line x1="16" y1="8" x2="16" y2="24" stroke="#fff" strokeWidth="1.5" />
       {/* Corner castings */}
-      <rect x="2" y="8" width="4" height="4" rx="0.5" fill="#fff" fillOpacity="0.25" />
-      <rect x="26" y="8" width="4" height="4" rx="0.5" fill="#fff" fillOpacity="0.25" />
-      <rect x="2" y="20" width="4" height="4" rx="0.5" fill="#fff" fillOpacity="0.25" />
-      <rect x="26" y="20" width="4" height="4" rx="0.5" fill="#fff" fillOpacity="0.25" />
+      <rect
+        x="2"
+        y="8"
+        width="4"
+        height="4"
+        rx="0.5"
+        fill="#fff"
+        fillOpacity="0.25"
+      />
+      <rect
+        x="26"
+        y="8"
+        width="4"
+        height="4"
+        rx="0.5"
+        fill="#fff"
+        fillOpacity="0.25"
+      />
+      <rect
+        x="2"
+        y="20"
+        width="4"
+        height="4"
+        rx="0.5"
+        fill="#fff"
+        fillOpacity="0.25"
+      />
+      <rect
+        x="26"
+        y="20"
+        width="4"
+        height="4"
+        rx="0.5"
+        fill="#fff"
+        fillOpacity="0.25"
+      />
       {/* Corrugation lines */}
-      <line x1="8" y1="9" x2="8" y2="23" stroke="#fff" strokeWidth="0.75" strokeOpacity="0.3" />
-      <line x1="12" y1="9" x2="12" y2="23" stroke="#fff" strokeWidth="0.75" strokeOpacity="0.3" />
-      <line x1="20" y1="9" x2="20" y2="23" stroke="#fff" strokeWidth="0.75" strokeOpacity="0.3" />
-      <line x1="24" y1="9" x2="24" y2="23" stroke="#fff" strokeWidth="0.75" strokeOpacity="0.3" />
+      <line
+        x1="8"
+        y1="9"
+        x2="8"
+        y2="23"
+        stroke="#fff"
+        strokeWidth="0.75"
+        strokeOpacity="0.3"
+      />
+      <line
+        x1="12"
+        y1="9"
+        x2="12"
+        y2="23"
+        stroke="#fff"
+        strokeWidth="0.75"
+        strokeOpacity="0.3"
+      />
+      <line
+        x1="20"
+        y1="9"
+        x2="20"
+        y2="23"
+        stroke="#fff"
+        strokeWidth="0.75"
+        strokeOpacity="0.3"
+      />
+      <line
+        x1="24"
+        y1="9"
+        x2="24"
+        y2="23"
+        stroke="#fff"
+        strokeWidth="0.75"
+        strokeOpacity="0.3"
+      />
     </svg>
   );
 }
@@ -57,15 +122,14 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm"
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container">
           <div className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 no-underline">
-              <LogoMark size={32} />
-              <span
+              {/* <LogoMark size={32} /> */}
+              <img src={logo} alt="howorld-logo" height={85} width={85} />
+              {/* <span
                 className="font-bold text-lg leading-none"
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
@@ -75,12 +139,12 @@ export default function Header() {
                 }}
               >
                 {SITE.name}
-              </span>
+              </span> */}
             </Link>
 
             {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map(link => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -102,7 +166,7 @@ export default function Header() {
                 {SITE.phone}
               </a>
               <Link href="/contact" className="btn-primary text-sm py-2 px-4">
-                Find the Right Container
+                Reach Out
               </Link>
             </div>
 
@@ -121,7 +185,9 @@ export default function Header() {
       {/* Mobile drawer */}
       <div
         className={`fixed inset-0 z-[100] lg:hidden transition-opacity duration-200 ${
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          mobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         {/* Backdrop */}
@@ -143,12 +209,15 @@ export default function Header() {
             >
               {SITE.name}
             </span>
-            <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
+            <button
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
               <X size={20} />
             </button>
           </div>
           <nav className="flex flex-col px-6 py-6 gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -171,8 +240,11 @@ export default function Header() {
               <Phone size={14} />
               {SITE.phone}
             </a>
-            <Link href="/contact" className="btn-primary text-center justify-center">
-              Find the Right Container
+            <Link
+              href="/contact"
+              className="btn-primary text-center justify-center"
+            >
+              Connect with us
             </Link>
           </div>
         </div>
