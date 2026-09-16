@@ -658,7 +658,7 @@ function ValuePropsSection() {
     },
     {
       title: "Flexible Ordering Terms",
-      body: "Order by the piece, batch, or on a recurring basis. No long-term commitments required.",
+      body: "Order by the piece, batch, or on a recurring basis.",
     },
     {
       title: "Wide Range of Products",
