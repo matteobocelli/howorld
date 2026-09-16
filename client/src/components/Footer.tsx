@@ -52,10 +52,10 @@ function InstagramIcon() {
 
 const FOOTER_NAV = [
   { href: "/", label: "Home" },
-  { href: "/containers", label: "Containers" },
+  { href: "/news-update", label: "New Update" },
   { href: "/how-it-works", label: "How It Works" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Footer() {
@@ -174,7 +174,7 @@ export default function Footer() {
             </div>
             <div className="mt-5 text-xs text-white/40 leading-relaxed">
               <p>{SITE.hours.weekdays}</p>
-              <p>{SITE.hours.saturday}</p>
+              {/* <p>{SITE.hours.saturday}</p> */}
               <p>{SITE.hours.sunday}</p>
             </div>
           </div>

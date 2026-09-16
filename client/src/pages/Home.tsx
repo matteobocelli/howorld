@@ -650,7 +650,7 @@ function ValuePropsSection() {
   const props = [
     {
       title: "Fast Delivery to Your Business",
-      body: "We deliver microelectronic components directly to your location — no need to arrange logistics. Just tell us where and when.",
+      body: "We deliver microelectronic components directly to your location.",
     },
     {
       title: "Secure & Reliable Supply",

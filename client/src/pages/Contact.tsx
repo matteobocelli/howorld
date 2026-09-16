@@ -359,7 +359,7 @@ export default function Contact() {
                     </div>
                     <div className="flex flex-col gap-1.5 text-sm">
                       <p>{SITE.hours.weekdays}</p>
-                      <p>{SITE.hours.saturday}</p>
+                      {/* <p>{SITE.hours.saturday}</p> */}
                       <p className="text-muted-foreground">
                         {SITE.hours.sunday}
                       </p>

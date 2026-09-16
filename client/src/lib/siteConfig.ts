@@ -13,8 +13,8 @@ export const SITE = {
   // ── Contact ───────────────────────────────────────────────────────────────
   phone: "+447438898686",
   phoneHref: "tel:+447438898686",
-  email: "info@howorld.com",
-  emailHref: "mailto:info@howorld.com",
+  email: "sales@howorldlimited.com",
+  emailHref: "mailto:sales@howorldlimited.com",
 
   // ── Address ───────────────────────────────────────────────────────────────
   address: {
@@ -26,8 +26,8 @@ export const SITE = {
   },
 
   // ── Website ───────────────────────────────────────────────────────────────
-  url: "https://www.howorld.com",
-  urlDisplay: "www.howorld.com",
+  url: "https://www.howorldlimited.com",
+  urlDisplay: "www.howorldlimited.com",
 
   // ── Social Media ──────────────────────────────────────────────────────────
   social: {

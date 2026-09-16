@@ -55,9 +55,7 @@ export default function ServiceAreas() {
               Service Areas
             </h1>
             <p className="text-white/60 mt-4 max-w-xl text-base leading-relaxed">
-              We deliver clean, inspected containers directly to your site.
-              Below are the areas we currently serve — contact us if you don't
-              see your location listed.
+              contact us if you don't see your location listed.
             </p>
           </FadeUp>
         </div>

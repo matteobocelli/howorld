@@ -251,13 +251,13 @@ export default function HowItWorks() {
                   Asked Questions
                 </h2>
                 <p className="text-sm text-muted-foreground mt-3 max-w-xs">
-                  Still have questions? Call us directly.
+                  Still have questions? Message us.
                 </p>
                 <a
                   href={SITE.phoneHref}
                   className="btn-ghost mt-5 text-sm py-2.5 px-5 inline-flex"
                 >
-                  <Phone size={14} /> {SITE.phone}
+                  {SITE.email}
                 </a>
               </FadeUp>
             </div>
